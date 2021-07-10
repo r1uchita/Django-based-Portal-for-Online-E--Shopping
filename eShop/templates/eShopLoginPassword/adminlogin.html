@@ -1,0 +1,86 @@
+{% extends "layout/loginBaseLayout.html" %}
+{% load static %}
+{% block title %}{{sname}} | Admin-Login {% endblock %}
+
+
+{% block content %}
+<!-- Login Part Start-->
+
+<div class="container">
+  <div class="forms-container">      
+    <div class="signin-signup">
+      <form action="/login" method="POST" class="sign-in-form">
+      <!-- Message start-->
+      {% if error%}
+      <div class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+    {% endif %}      
+      <!-- Message End-->
+      <h2 class="title">ADMIN</h2>
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          {% csrf_token %} 
+          
+          <!-- email -->
+          <input required type="email" name="email" id="" 
+          value="{{values.email}}" 
+          class=" form-control-sm form-control" placeholder="Email">
+          <!-- <input type="text" placeholder="Username" /> -->
+        </div>
+
+
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+           <!-- password -->
+          <input type="password" name="password" id=""
+          class="form-control form-control-sm" placeholder="Password">
+          <!-- <input type="password" placeholder="Password" /> -->
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <p class="mb-1">
+              <a href="{% url 'password_reset' %}" class="social-text">I Forgot My Password</a>
+            </p>
+          </div>
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block solid">Sign-In</button>
+          </div>          
+        </div>
+
+        <p class="social-text">Or Sign in with social platforms</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+      </form>
+      </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <div>
+              <a class="navbar-brand" href="/">
+                <img style="opacity: .8; position: relative;" src="../../media/img/imageedit_12_9732656383.gif" > </a>
+            </div>
+            <h3>E-SHOP Admin-Login</h3>
+            <p> Welcome to E-SHOP Admin-Login <br>
+              Pick your favorites..One-stop for head to toe look..Look good with us..Shop what you wanted..Buy it at lesser prices..Shopping at its best..
+            </p>
+          </div>
+          <img src="http://www.jainmedical.in/login/svg/admin-img.svg" class="image" alt="" style="margin-right: 100px;">
+        </div>
+    </div>
+</div>
+{% endblock %}

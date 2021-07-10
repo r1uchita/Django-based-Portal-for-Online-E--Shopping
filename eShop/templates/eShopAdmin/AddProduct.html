@@ -1,0 +1,48 @@
+{% extends 'layout/adminBaseLayout.html' %}
+{% load static %}
+{% block title %}{{sname}} | Add Product{% endblock %}
+{% block content %}
+<!-- <html>
+<head>
+	<title>Add product </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<!-- Add icon library -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="MyStyle.css">
+</head>
+
+<body> -->
+	<div class="container"><br><br>
+		<h3>Add product </h3><br><br>
+
+
+      <label for="name">Name :</label>&nbsp;&nbsp;
+      <input type="text" id="name"><hr>
+
+
+      <label for="price">Price : </label>&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="number" id="price"  min=0 oninput="validity.valid||(value='');"><hr>
+
+  		<label for="category">Category : </label>
+		  <select name="category" id="category">
+    		<option value="none">----------</option>
+  		</select><br><hr>
+
+       <label for="description">Description :</label>&nbsp;&nbsp;
+      <input type="text" id="description"><hr>
+
+       <label for="img">Image :</label>&nbsp;&nbsp;
+       <input type="file" id="img" name="img" accept="image/*">
+       <hr>
+
+		
+  		<button class="save">Save and add another</button>&nbsp;
+  		<button class="save">Save and continue editing</button>&nbsp;
+  		<button class="save">SAVE</button>
+
+</div>
+<!-- </body>
+</html> -->
+{% endblock %}

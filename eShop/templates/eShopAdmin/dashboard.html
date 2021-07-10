@@ -1,0 +1,238 @@
+{% extends 'layout/adminBaseLayout.html' %}
+{% load static %}
+
+{% block title %}{{sname}} | Dashboard {% endblock %}
+{% block content %}
+
+    <div class="cards">
+      <div class="card-single">
+        <div>
+          <h1 style="text-align:center;">{{customercount}}</h1>
+          <span>Customers</span>
+        </div>  
+        <div>
+          <span class="las la-users"></span>
+        </div>
+      </div>
+
+      <div class="card-single">
+        <div>
+          <h1 style="text-align:center;">{{ordercount}}</h1>
+          <span>Orders</span>
+        </div>
+        <div>
+            <span class="las la-shopping-bag"></span> 
+        </div>
+      </div>
+
+      <div class="card-single">
+        <div>
+         <h1 style="text-align:center;">{{categorycount}}</h1>
+         <span>Category</span>
+        </div>
+        <div>
+          <span class="las la-home"></span>
+        </div> 
+     </div>
+      
+     <div class="card-single">
+        <div>
+          <h1 style="text-align:center;">{{productcount}}</h1>
+          <span>Products</span>
+        </div>
+        <div>
+          <span class="las la-gifts"></span>
+        </div>
+      </div>
+    </div>
+    <!--Project Part Start-->
+    <div class="recent-grid">
+      <div class="projects">
+        <div class="card">
+          <div class="card-header">
+            <h3>Recent Orders</h3>
+            <form method="GET" action="/Order"> 
+            <button>See all <span class="las la-arrow-right">
+            </span></button></form>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table width="100%">
+                <thead>
+                  <tr>
+                    <th>Customer Name</th>
+                    <th>Customer Mobile</th>
+                    <th>Shipment Address</th>
+                    <th>Product Name</th>
+                    <th>Product Picture</th>
+                    <th>Status</th>
+        
+                  </tr>
+                </thead>
+                {% for product,customer,order in data %}
+                <tr>
+                  {% for c in customer %}
+                  <td> {{c.get_name}}</td>
+                  <td>{{c.phone}}</td>
+                  <td>{{order.address}}</td>
+        
+                  {% endfor %}
+                  {% for p in product %}
+                  <td> {{p.name}}</td>
+                  <td> <img src="{{ p.image.url }}" alt="Profile Pic" height="40px" width="40px" /></td>
+        
+                  {% if order.status == 'Order Confirmed'%}
+                  <td> <span class="status blue">{{order.status}}</span></td>
+                  {% elif order.status == 'Delivered' %}
+                  <td> <span class="status green">{{order.status}}</span></td>
+                  {% elif order.status == 'Out for Delivery' %}
+                  <td> <span class="status yellow">{{order.status}}</span></td>
+                  {%else%}
+                    <td> <span class="status red">{{order.status}}</span></td>
+                  {%endif%}
+                  {% endfor %}
+                </tr>
+                {% endfor %}
+              </table>
+              <!-- <table width="100%">
+                  <thead>
+                    <tr>
+                      <td>Order Name</td>
+                      <td>Category</td>
+                      <td>Status</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Redmi K20 Pro</td>
+                      <td>Mobile</td>
+                      <td>
+                        <span class="status green"></span>
+                        Delivered!
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Men's While Shirt</td>
+                      <td>Clothing</td>
+                      <td>
+                        <span class="status red"></span>
+                        Pending..
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Dell Espiron Laptop</td>
+                      <td>Laptop</td>
+                      <td>
+                        <span class="status red"></span>
+                        Pending..
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Sonata 360 dial Watch</td>
+                      <td>Accessories</td>
+                      <td>
+                        <span class="status green"></span>
+                        Delivered!
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Adidas Shoes pair</td>
+                      <td>Foot-Wear</td>
+                      <td>
+                        <span class="status yellow"></span>
+                        In Progress..
+                      </td>
+                    </tr>
+                  </tbody>
+              </table> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="customers">
+        <div class="card">
+          <div class="card-header">
+            <h3>Admins</h3>
+            
+            <button type="submit">See all <span class="las la-arrow-right">
+            </span></button>
+          </div>
+          <div class="card-body">
+            <div class="customer">
+              <div class="info">
+                <a href="../../media/img/Profile photo.jpg" target="_blank"><img src="../../media/img/Profile photo.jpg" width="40px" height="40px" alt=""></a>
+                <div>
+                    <h4>Yogesh Maindargi</h4>
+                    <small>Full Stack Developer</small>
+                </div>
+              </div>
+              <div class="contact">
+                <span class="las la-user-circle"></span>
+                <span class="las la-comment"></span>
+                <a href="tel:+917020103460"><span class="las la-phone"></span></a>
+              </div>
+            </div>
+            <div class="customer">
+              <div class="info">
+                <a href="../../media/img/ruchita.jpeg" target="_blank"><img src="../../media/img/ruchita.jpeg" width="40px" height="40px" alt=""></a>
+                <div>
+                    <h4>Ruchita Bhandari</h4>
+                    <small>Database Analysts</small>
+                </div>
+              </div>
+              <div class="contact">
+                <span class="las la-user-circle"></span>
+                <span class="las la-comment"></span>
+                <a href="tel:+919322839308"><span class="las la-phone"></span></a>
+              </div>
+            </div>
+            <div class="customer">
+              <div class="info">
+                <a href="../../media/img/gazala.jpeg" target="_blank"><img src="../../media/img/gazala.jpeg" width="40px" height="40px" alt=""></a>
+                <div>
+                    <h4>Gazala Shaikh</h4>
+                    <small>System Analysts</small>
+                </div>
+              </div>
+              <div class="contact">
+                <span class="las la-user-circle"></span>
+                <span class="las la-comment"></span>
+                <a href="tel:+919527348906"><span class="las la-phone"></span></a>
+              </div>
+            </div>
+            <div class="customer">
+              <div class="info">
+                <a href="../../media/img/yogi.jpg" target="_blank"><img src="../../media/img/yogi.jpg" width="40px" height="40px" alt=""></a>
+                <div>
+                    <h4>Yogesh Kokal</h4>
+                    <small>Software Testing</small>
+                </div>
+              </div>
+              <div class="contact">
+                <span class="las la-user-circle"></span>
+                <span class="las la-comment"></span>
+                <a href="tel:+918793502544"><span class="las la-phone"></span></a>
+              </div>
+            </div>
+            <div class="customer">
+              <div class="info">
+                <a href="../../media/img/5.jpeg" target="_blank"><img src="../../media/img/5.jpeg" width="40px" height="40px" alt=""></a>
+                <div>
+                    <h4>Aishwarya Tambake</h4>
+                    <small>Django Developer</small>
+                </div>
+              </div>
+              <div class="contact">
+                <span class="las la-user-circle"></span>
+                <span class="las la-comment"></span>
+                <a href="tel:+918459232531"><span class="las la-phone"></span></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+  {% endblock %}

@@ -1,0 +1,111 @@
+/*Category*/
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+.btn {
+  background-image: Linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+	animation: Gradient 15s ease infinite;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 17px;
+  float: right;
+}
+.category{
+	float: left;
+}
+
+
+/*Add category */
+#name{
+	padding: 8px;
+	font-size: 12px;
+	 border-radius: 8px;
+	border-style: solid;
+	border-color: black;
+	width: 300;
+	height: 30;
+}
+.save{
+  background-color:  #6699ff;
+  color:white;
+  border: none;
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  float: center;
+  height: 40;
+}
+
+/*Customer*/
+.Go{
+	background-color:#e6e6e6;
+    color: black;
+    font-size: 12px;
+    padding: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 40;
+}
+.p{
+	float:right;
+}
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #a6a6a6;
+  color: white;
+   text-align: center;
+}
+
+.my-custom-scrollbar {
+position: relative;
+height: 200px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+
+/*Add Customers*/
+#Fname,#email,#phone,#pass,#address,#product,#customer,#price,#quantity,#date,#category,#description{
+	padding: 8px;
+	font-size: 12px;
+	 border-radius: 8px;
+	border-style: solid;
+	border-color: black;
+	width: 200;
+	height: 30;
+}

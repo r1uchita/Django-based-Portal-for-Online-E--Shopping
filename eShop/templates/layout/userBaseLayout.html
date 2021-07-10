@@ -1,0 +1,245 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="https://static.thenounproject.com/png/312560-200.png" sizes="64x64">
+  <link rel="stylesheet" href="{% static 'css/all.min.css' %}" type="text/css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/eshopbanner.bootstrap.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/eShopbanner.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/card.css' %}">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+
+  <title>{% block title %} {{sname}} : Pick Your Favorites {% endblock %}</title>
+
+  <style>
+    body {
+    padding-top: 130px;
+  }
+
+  .header {
+    height: 130px;
+    position: fixed;
+    top: 0;
+    transition: top 0.2s ease-in-out;
+    width: 100%;
+  }
+
+  .nav-up {
+    top: -130px;
+  }
+    
+    .example::-webkit-scrollbar {
+      display: none;
+    }
+    nav{
+      background-color: white;
+    }
+
+    .one-edge-shadow {
+      box-shadow: 0 8px 2px -5px rgb(246, 245, 245);
+    }
+    
+    .display-8{
+      font-weight: 200;
+      font-size: 30px;
+    }
+
+    @-webkit-keyframes Gradient {
+	    0% {
+		    background-position: 0% 50%
+	    }
+	    50% {
+		    background-position: 100% 50%
+	    }
+	    100% {
+		    background-position: 0% 50%
+	    }
+    }
+
+    .input-primary:hover{
+      background-color:white;
+      color:#FE4545; 
+      border:1px solid #FE4545;
+    }
+  </style>
+</head>
+
+<body class="example" style="background-image: Linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);background-position: center;
+background-repeat: no-repeat;
+background-size: 400% 400%;height: 100%;
+animation: Gradient 15s ease infinite;">
+
+  <!-- navbar -->
+  <nav class="one-edge-shadow sticky-top navbar navbar-expand-lg navbar-dark header nav-down " 
+       style="background: black;">
+    <div>
+      <a class="navbar-brand" href="/">
+        <img style="margin-top: -25px;" class="tig" src="../../media/img/Gray.png" >
+        <hr style="margin-top: -20px;margin-left: 50px;"><hr>
+        <h4 style="font-style: italic;text-align: center ;margin-top: -30px;margin-left: 50px;">{{ sname }}</h4>
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- <div class="navbar-search smallsearch col-sm-8 col-xs-11"> -->
+        <form  action="/search" method="get">
+          <div style="margin-left: 200px;" > <input  type="search" placeholder="Search for Products" name="query" id="query">
+            <button  type="submit">
+              <svg width="15px" height="15px">
+                      <path d="M11.618 9.897l4.224 4.212c.092.09.1.23.02.312l-1.464 1.46c-.08.08-.222.072-.314-.02L9.868 11.66M6.486 10.9c-2.42 0-4.38-1.955-4.38-4.367 0-2.413 1.96-4.37 4.38-4.37s4.38 1.957 4.38 4.37c0 2.412-1.96 4.368-4.38 4.368m0-10.834C2.904.066 0 2.96 0 6.533 0 10.105 2.904 13 6.486 13s6.487-2.895 6.487-6.467c0-3.572-2.905-6.467-6.487-6.467 "></path>
+              </svg>
+            </button>
+          </div>
+        </form>
+      <!-- </div> -->
+      
+      <ul class=" navbar-nav my-2 my-lg-0 ml-auto">
+        <li class="nav-item ">
+          <a class="nav-link" href="/cart" style="color: white;"> <i class="fas fa-shopping-cart" style="color:#fff;" ></i> &nbsp;Cart 
+            <span class="badge" style="color: whitesmoke;">{{request.session.cart.keys|length}}</span>
+            <span class="sr-only" >(current)</span></a>
+        </li>
+        {% if request.session.customer %}
+        
+        <li class="nav-item ">
+          <a class="nav-link" href="/orders" style="color: white;">Orders<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="my-profile" style="color: white;">Profile<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="send-feedback" style="color: white;">Feedback<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="/logout" style="color: white;">Logout<span class="sr-only">(current)</span></a>
+        </li>
+        {% else %}
+       
+        <!-- <li class="nav-item ">
+          <a class="nav-link" href="/signup" style="color: white;">Signup<span class="sr-only">(current)</span></a>
+        </li> -->
+        <li class="nav-item ">
+          <a class="nav-link" href="/login" style="color: white;">Login<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link " href="/About-Us" style="text-decoration: none;color:white;"> About Us<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link fa fa-phone fa-flip-horizontal" href="tel:+917020103460" style="text-decoration: none;color:white;margin-top: .2rem;"><span class="sr-only">(current)</span></a>
+        </li>
+        {% endif %}
+
+
+
+      </ul>
+
+
+    </div>
+  </nav>
+
+
+    {% block content %}{% endblock %}
+    <br><br>
+
+    {% include "eShopUser/footer.html" %}
+
+<!-- <footer class=" container-fluid copyright" style="background-color: #232B38;margin-top: 10px;"> -->
+      <!-- To the right -->
+<!-- <div class="float-right d-none d-sm-inline">
+
+  <i class="fa fa-spinner fa-pulse fa-fw">
+<a href="#" style="color: white;"> </i> </a>
+<p class="float-right" style="color: white;"><a href="#" style="color: white;">Back to top</a></p>
+</div> -->
+<!-- Default to the left -->
+<!-- <strong style="color: white;">Copyright &copy; <script>document.write(new Date().getFullYear());</script> <a href="#" style="color: white;">{{sname}} All rights reserved.</a>.</strong>  
+ 
+</footer> -->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="{% static 'js/eshopbanner.bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/flicker.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/vanilla-tilt.js' %}"></script>
+    <script src="{% static 'js/confetti.js' %"></script>
+    
+    <script type="text/javascript">
+      VanillaTilt.init(document.querySelectorAll(".single-box"), {
+        max: 25,
+        speed: 400,
+        glare: true,
+        // "max-glare":1,
+      });
+    </script>
+    <script>
+      // Hide Header on on scroll down
+var didScroll;
+var lastScrollTop = 0;
+var delta = 5;
+var navbarHeight = $('.header').outerHeight();
+
+$(window).scroll(function(event){
+    didScroll = true;
+});
+
+setInterval(function() {
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+}, 50);
+
+function hasScrolled() {
+    var st = $(this).scrollTop();
+    
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta)
+        return;
+    
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (st > lastScrollTop && st > navbarHeight){
+        // Scroll Down
+        $('.header').removeClass('nav-down').addClass('nav-up');
+    } else {
+        // Scroll Up
+        if(st + $(window).height() < $(document).height()) {
+            $('.header').removeClass('nav-up').addClass('nav-down');
+        }
+    }
+    
+    lastScrollTop = st;
+}
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+{% extends 'layout/userBaseLayout.html' %}
+
+{% block content %}
+
+{% load cart %}
+{% load custom_filter %}
+<!-- body -->
+<style>
+	.card:hover{
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+</style>
+
+
+<section class="home" >
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-controls">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel" data-slide-to="0" class="active" style="background-image:url('media/img/banner1.jpeg')"></li>
+        <li data-target="#carousel" data-slide-to="1" style="background-image:url('media/img/banner2.jpg')"></li>
+        <li data-target="#carousel" data-slide-to="2" style="background-image:url('media/img/banner3.jpg')"></li>
+        
+      </ol>
+      <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+       <img src="media/img/left-arrow.svg" alt="Prev"> 
+    </a>
+    <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+      <img src="media/img/right-arrow.svg" alt="Next">
+    </a>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" style="background-image:url('media/img/banner1.jpeg')">
+        <div class="container">
+           <h2>Experience shopping like never before</h2>
+           <p></p>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image:url('media/img/banner2.jpg')">
+        <div class="container">
+           <h2>Fashion is a trend. Style lives within a preson.</h2>
+           <p></p>
+        </div>
+      </div>
+      <div class="carousel-item" style="background-image:url('media/img/banner3.jpg')">
+        <div class="container">
+           <h2>Good Shoes Take You Good Places</h2>
+           <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+   </section>
+<div class="container-fluid mt-3">
+	<div class="row">
+
+
+		<!-- filter -->
+
+		<div class="col-lg-3 mx-auto" >
+			<div class="list-group" >
+				<a href="/" class="list-group-item list-group-item-action list-group-item-warning">All Products</a>
+				{% for category in categories %}
+				<a href="/?category={{category.id}}"
+					class="list-group-item list-group-item-action list-group-item-warning">{{category.name}}</a>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- all products -->
+		<div id='products' class="col-lg-9 mx-auto" >
+			<div class="row mx-auto" >
+				{% for product in products %}
+				<div class="card mx-auto mb-3" id={{product.id}} style="width: 18rem;" >
+					<img class="card-img-top" src="{{product.image.url}}" alt="Card image cap" style="  padding:0.5rem ;
+					border-radius: 4px;
+					-webkit-border-radius: 4px;
+					-moz-border-radius: 4px;
+					-ms-border-radius: 4px;
+					-o-border-radius: 4px;">
+					<hr>
+					<div class="card-body" style=" padding:0.2rem ;
+					border-radius: 4px;
+					-webkit-border-radius: 4px;
+					-moz-border-radius: 4px;
+					-ms-border-radius: 4px;
+					-o-border-radius: 4px;" >
+						<p class="card-title" style="text-align: center; font-weight: bold;">{{product.name}}</p>
+						<div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+						<i class="fas fa-star" style="color: #f87015;"></i>
+						<i class="fas fa-star" style="color: #f87015;"></i>
+						<i class="fas fa-star" style="color: #f87015;"></i>
+						<i class="fas fa-star" style="color: #dfdddd;"></i>
+						<i class="fas fa-star" style="color: #dfdddd;"></i> </div>
+						<p class="card-text" style="text-align: center;"><b>{{product.price|currency}}</b></p>
+					</div>
+
+					
+					<div class="card-footer p-0 no-gutters">
+
+						{% if product|is_in_cart:request.session.cart %}
+						<div class="row no-gutters">
+							<form action="/#{{product.id}}" class="col-2 " method="post">
+								{% csrf_token %}
+								<input hidden type="text" name='product' value='{{product.id}}'>
+								<input hidden type="text" name='remove' value='True'>
+								<input type="submit" value=" - " class="btn btn-block btn-light border-right">
+							</form>
+							<div class="text-center col">{{product|cart_quantity:request.session.cart}} in Cart</div>
+							<form action="/#{{product.id}}" class="col-2 " method="post">
+								{% csrf_token %}
+								<input hidden type="text" name='product' value='{{product.id}}'>
+								<input type="submit" value=" + " class="btn btn-block btn-light border-left">
+							</form>
+						</div>
+						{% else %}
+						<form action="/#{{product.id}}" method="POST" class="btn-block">
+							{% csrf_token %}
+						
+							<input hidden type="text" name='product' value='{{product.id}}'>
+							
+							<input type="submit" class="float-right btn btn-light  form-control input-primary"
+								value="Add To Cart" style="background-color: #039623; color: white;">  
+						</form>
+						{% endif %}
+
+					</div>
+
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+                      
+          
+
+
+{% endblock %}

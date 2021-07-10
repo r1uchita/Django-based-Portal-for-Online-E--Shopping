@@ -1,0 +1,57 @@
+{% extends 'layout/adminBaseLayout.html' %}
+{% load static %}
+{% block title %}{{sname}} | Customers{% endblock %}
+{% block content %}
+<!-- <html>
+	<head>
+		<title>Select customer to change</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<!-- Add icon library -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="MyStyle.css">
+</head>
+
+<body> -->
+	<div class="container"><br><br>
+		<h3  class=category> Customer </h3>
+	</div>
+
+	<div class="container"><br><br><br><hr>
+		<div class="table-wrapper-scroll-y my-custom-scrollbar">
+ 		 <table class="table table-bordered table-striped mb-0">
+  		 <table id="customers">
+			<!-- <div class="container">
+				<div class="panel panel-primary"> -->
+				  <div class="panel-heading">
+					<h6 class="panel-title">Total Customer List</h6>
+				  </div>
+					<div class="table-responsive">
+					  <table width="100%">
+					<thead>
+					  <tr>
+						<th>Profile Picture</th>
+						<th>Name</th>
+						<th>Mobile</th>
+						<th>Email</th>
+					  </tr>
+					</thead>
+					{% for c in customers %}
+					<tr>
+						<td><img src="{{ c.profile_pic.url }}" alt="Profile Pic" height="40px" width="40px" /></td>
+						<td>{{c.get_name}}</td>
+					  	<td>{{c.phone}}</td>
+					  	<td>{{c.email}}</td>			  
+					</tr>
+					{% endfor %}
+					</table>
+					</div>
+				  </table>
+		</table><br><br><hr>
+		<h4>Total Customer : {{customercount}}</h4><hr>
+	</div></div>
+
+<!-- </body>
+</html> -->
+{% endblock %}

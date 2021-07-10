@@ -1,0 +1,41 @@
+{% extends 'layout/adminBaseLayout.html' %}
+{% load static %}
+{% block title %}{{sname}} | Add Customers{% endblock %}
+{% block content %}
+<!-- <html>
+<head>
+  <title>Add Customers </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <!-- Add icon library -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="MyStyle.css">
+</head>
+
+<body> -->
+
+  <div class="container"><br><br>
+    <h3>Add Customer </h3><br><br><hr>
+    
+    <label for="name">First Name :</label>
+    <input type="text" id="Fname"><br><hr>
+    
+    <label for="phone">Phone :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" id="phone"><br><hr>
+
+    <label for="email">Email :</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" id="email"><br><hr>
+      
+
+    <label for="password">Password :</label>&nbsp;
+    <input type="text" id="pass"><br><hr>
+
+    <button class="save">Save and add another</button>&nbsp;
+    <button class="save">Save and continue editing</button>&nbsp;
+    <button class="save">SAVE</button>
+
+</div>
+<!-- </body>
+</html> -->
+{% endblock %}

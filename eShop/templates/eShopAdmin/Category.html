@@ -1,0 +1,44 @@
+{% extends 'layout/adminBaseLayout.html' %}
+{% load static %}
+{% block title %}{{sname}} | Category{% endblock %}
+{% block content %}
+
+<!-- <html>
+<head>
+	<title>Select category to change </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<!-- Add icon library -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/MyStyle.css' %}">
+</head> -->
+
+<!-- <body> -->
+	<div class="container"><br><br>
+		<h3  class=category> Category</h3>
+	</div>
+
+	<div class="container"><br><br><hr>
+					  <div class="table-responsive">
+						<table width="100%">
+						  <thead>
+							<tr>
+							  <th>Category Name<br><hr></th>				  
+							</tr>
+						  </thead>
+						  {% for category in categories %}
+						  <tr>
+							
+							<td>{{category.name}}</td>
+							
+						  </tr>
+						  {% endfor %}
+						</table>
+					</div>
+<hr>
+		<h4>Total Category : {{categorycount}}</h4><hr>
+	</div>
+<!-- </body>
+</html> -->
+{% endblock %}

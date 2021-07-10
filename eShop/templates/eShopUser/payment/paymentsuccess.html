@@ -1,0 +1,74 @@
+{% extends 'layout/userBaseLayout.html' %}
+{% load static %}
+
+
+{% block content %}
+<style>
+
+    /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Kristi", cursive;
+      } */
+
+      html {
+        font-size: 50.5%;
+      }
+
+      .main_header {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+
+      .center_div {
+        min-width: 50vw;
+        height: 40vh;
+        color: #000;
+        text-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+        font-size: 7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        text-align:center;
+      }
+
+ @media (max-width: 768px) {
+        html {
+          font-size: 35%;
+        }
+      }
+</style>
+<div class="main_header">
+    <div class="center_div">
+      <p>
+        Payment Success
+        <br />
+        🎉Congratulations! You have successfully done the payment. Your order will reach to you in 5 days.🎉
+      </p>
+    </div>
+  </div>
+  
+    <script>
+
+      const startit = () => {
+        setTimeout(function () {
+          console.log("start");
+          confetti.start();
+        }, 1000);
+      };
+
+      const stopit = () => {
+        setTimeout(function () {
+          console.log("stop");
+          confetti.stop();
+        }, 6000);
+      };
+
+      startit();
+      stopit();
+    </script>
+{% endblock %}

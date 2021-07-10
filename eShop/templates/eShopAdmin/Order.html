@@ -1,0 +1,66 @@
+{% extends 'layout/adminBaseLayout.html' %}
+{% load static %}
+{% block title %}{{sname}} | Order{% endblock %}
+{% block content %}
+<!-- <html>
+<head>
+	<title>Select order to change </title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<!-- Add icon library -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="MyStyle.css">
+</head>
+
+<body> -->
+	<div class="container"><br><br>
+		<h3  class=category> Orders </h3>
+	</div>
+
+	<div class="container"><br><br><br><hr>
+				  <div class="table-responsive">
+					<table width="100%">
+					  <thead>
+						<tr>
+						  <th>Customer Name<hr></th>
+						  <th>Customer Mobile<hr></th>
+						  <th>Shipment Address<hr></th>
+						  <th>Product Name<hr></th>
+						  <th>Product Picture<hr></th>
+						  <th>Status<hr></th>
+			  
+						</tr>
+					  </thead>
+					  {% for product,customer,order in data %}
+					  <tr>
+						{% for c in customer %}
+						<td> {{c.get_name}}</td>
+						<td>{{c.phone}}</td>
+						<td>{{order.address}}</td>
+			  
+						{% endfor %}
+						{% for p in product %}
+						<td> {{p.name}}</td>
+						<td> <img src="{{ p.image.url }}" alt="Profile Pic" height="40px" width="40px" /></td>
+			  
+						{% if order.status == 'Order Confirmed'%}
+						<td> <span class="status blue">{{order.status}}</span></td>
+						{% elif order.status == 'Delivered' %}
+						<td> <span class="status green">{{order.status}}</span></td>
+						{% elif order.status == 'Out for Delivery' %}
+						<td> <span class="status yellow">{{order.status}}</span></td>
+						{%else%}
+						  <td> <span class="status red">{{order.status}}</span></td>
+						{%endif%}
+						{% endfor %}
+					  </tr>
+					  {% endfor %}
+					</table>
+					</div><br><hr>
+					<h4>Total Order : {{ordercount}}</h4><hr>
+				</div>
+		
+<!-- </body>
+</html> -->
+{% endblock %}

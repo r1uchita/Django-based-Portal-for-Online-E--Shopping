@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>.example::-webkit-scrollbar {
+      display: none;
+    }</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>{% block title %} {{sname}}|Admin Panel {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	  <link rel="stylesheet" type="text/css" href="{% static 'css/MyStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="icon" href="https://cdn1.vectorstock.com/i/thumb-large/27/60/online-shop-online-store-logo-logotype-vector-20582760.jpg">
+  </head>
+  <body class="example">
+    <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+      <a href="{% url 'store' %}">
+      <div class="sidebar-brand">
+        <h2><span class="lab la-accusoft"></span><span>{{sname}}</span></h2>
+      </div>
+    </a>
+
+      <div class="sidebar-menu">
+        <nav class="mt-2">
+        <ul>
+          <li>
+            <a href="/Admin-Dashboard" class="active"><span class="las la-igloo"></span>
+            <span>Dashboard</span></a>
+          </li>
+          <li>
+            <a href="/Category" class="active"><span class="las la-list-alt"></span>
+            <span>Category</span></a>
+          </li>
+          <li>
+            <a href="/Product" class="active"><span class="las la-gifts"></span>
+            <span>Products</span></a>
+          </li>
+          <li>
+            <a href="/Customers" class="active"><span class="las la-users"></span>
+            <span>Customers</span></a>
+          </li>
+          <li>
+            <a href="/Order" class="active"><span class="las la-shopping-bag"></span>
+            <span>Orders</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <header>
+        <h2><label for="nav-toggle"><span class="pointer las la-bars"></span></label>Dashboard</h2>
+        <div class="search-wrapper">
+          <span class="las la-search"></span>
+            <input type="search" placeholder="Search here" />
+        </div>
+        <div class="user-wrapper">
+          <a href="../../media/img/Profile photo.jpg" target="_blank"><img src="../../media/img/Profile photo.jpg" width="40px" height="40px" alt=""></a>
+          <div>
+            <h4>Yogesh Maindargi</h4>
+            <small>Super Admin</small>
+          </div>
+        </div>
+      </header>
+      <main>
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </body>
+</html>
